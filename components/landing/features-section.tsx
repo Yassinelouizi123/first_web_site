@@ -6,7 +6,7 @@ import Link from "next/link";
 function FeaturesSection() {
   return (
     <motion.section
-      id="services-section" 
+      id="services-section"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5, delay: 0.2 }}
@@ -15,7 +15,7 @@ function FeaturesSection() {
       <div className="container grid items-center justify-center gap-4 text-center lg:gap-10">
         <div className="space-y-6">
           <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
-           Découvrez nos services de conseil
+            Découvrez nos services de conseil
           </h2>
           <p className="mx-auto max-w-[700px] text-muted-foreground md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
             Découvrez comment Upmind Business Consulting peut aider votre organisation avec une gamme de services adaptés à vos besoins.
@@ -57,23 +57,28 @@ function FeaturesSection() {
               description="Un accompagnement expert à chaque étape de vos projets et programmes."
             />
           </Link>
-          <Link href="/humanCapital" className="sm:mb-[10px] mb-[60px]"
-          >
-                      <FeatureCard
+          <Link href="/humanCapital" className="sm:mb-[10px] mb-[60px]">
+            <FeatureCard
               image="/humanCapitalImg.jpg"
               title="Capital Humain et Conduite de Changement"
               description="Renforcez vos effectifs et gérez efficacement le changement."
             />
           </Link>
         </div>
-
       </div>
     </motion.section>
   );
 }
 
-// Updated FeatureCard component
-function FeatureCard({ image, title, description }) {
+// Define the type for FeatureCard props
+interface FeatureCardProps {
+  image: string;
+  title: string;
+  description: string;
+}
+
+// Updated FeatureCard component with typed props
+function FeatureCard({ image, title, description }: FeatureCardProps) {
   return (
     <motion.div
       whileHover={{ scale: 1.05 }}
