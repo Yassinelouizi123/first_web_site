@@ -98,4 +98,5 @@ function FeatureCard({ image, title, description }: FeatureCardProps) {
   );
 }
 
+// Added a comment to create a change
 export default FeaturesSection;
