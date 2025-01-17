@@ -4,12 +4,17 @@ import React, { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
 const ContactMeForm = () => {
-  const form = useRef();
+  const form = useRef<HTMLFormElement>(null); // Add type to the ref
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const sendEmail = (e) => {
+  const sendEmail = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
+
+    if (!form.current) {
+      console.error("Form reference is not available.");
+      return;
+    }
 
     emailjs
       .sendForm(
@@ -22,7 +27,7 @@ const ContactMeForm = () => {
         (result) => {
           console.log("Email sent successfully!", result.text);
           alert("Message sent successfully!");
-          form.current.reset(); // Reset the form fields
+          form.current?.reset(); // Reset the form fields
         },
         (error) => {
           console.error("Failed to send email:", error.text);
